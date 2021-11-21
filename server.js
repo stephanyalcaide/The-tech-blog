@@ -2,7 +2,7 @@
 const path = require('path');
 
 require('dotenv').config();
-// const express uses express for this server.
+
 const express = require('express');
 const routes = require('./controllers/');
 // sql 
@@ -17,9 +17,9 @@ const helpers = require('./utils/helpers');
 const hbs = exphbs.create({ helpers });
 const sess = {
     secret: process.env.DB_SESSION_SECRET,
-    cookie: { maxAge: 7200000 },
+    cookie: { maxAge: 720000 },
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: ,
     store: new SequelizeStore({
       db: sequelize
     })
@@ -27,7 +27,7 @@ const sess = {
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// server => public directory
+// server => public directoryy
 app.use(express.static(path.join(__dirname, 'public')));
 
 // handlebars
@@ -42,6 +42,6 @@ app.use(routes);
 
 // console.log 'now listening'
 sequelize.sync({ force: false }).then(() => {
-    app.listen(PORT, () => console.log('Now listening'));
+    app..listen(PORT, () => console.log('Now listening'));
   });
   // end of code
